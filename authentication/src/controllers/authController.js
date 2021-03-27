@@ -186,6 +186,9 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Checks if user is authorized
+// @route   POST /api/protect
+// @access  Public
 const protect = asyncHandler(async (req, res, next) => {
   let token;
 
@@ -214,6 +217,9 @@ const protect = asyncHandler(async (req, res, next) => {
   }
 });
 
+// @desc    Checks if user is admin
+// @route   POST /api/admin
+// @access  Public
 const admin = asyncHandler((req, res, next) => {
   if (req.user && req.user.isAdmin) {
     next();
