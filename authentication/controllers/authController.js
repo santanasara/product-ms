@@ -10,9 +10,11 @@ const validateToken = asyncHandler(async (req, res) => {
   const { token } = req.body
 
   const decoded = jwt.verify(token, process.env.JWT_SECRET)
+  console.log(decoded)
   const user = await User.findById(decoded.id).select('-password')
+  console.log(user)
 
-  if (user && (await user.matchPassword(password))) {
+  if (user) {
     res.json({
       user: user,
       isValid: !!user

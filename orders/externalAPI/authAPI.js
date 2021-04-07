@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 const validateToken = async (token) => {
-  const resp = await axios.post(process.env.AUTH_API_PATH, {
+  const resp = await axios.post(`${process.env.AUTH_API_PATH}/validateToken`, {
     token
   })
   if (resp?.status === 200) {
